@@ -83,7 +83,7 @@ resource "tfe_sentinel_policy" "aws-restrict-ingress-sg-rule-cidr-blocks" {
   name         = "Sec-aws-ingress-cidr-0.0.0.0"
   description  = "Avoid nasty firewall mistakes (AWS version)"
   organization = "${var.tfe_organization}"
-  policy       = "${file("./aws-restrict-ingress-sg-rule-cidr-blocks-12.sentinel")}"
+  policy       = "${file("./aws-restrict-ingress-sg-rule-cidr-blocks.sentinel")}"
   enforce_mode = "soft-mandatory"
 }
 
@@ -92,7 +92,7 @@ resource "tfe_sentinel_policy" "azurerm-block-allow-all-cidr" {
   description  = "Avoid nasty firewall mistakes (Azure version)"
   organization = "${var.tfe_organization}"
   policy       = "${file("./azurerm-block-allow-all-cidr.sentinel")}"
-  enforce_mode = "hard-mandatory"
+  enforce_mode = "soft-mandatory"
 }
 
 resource "tfe_sentinel_policy" "gcp-block-allow-all-cidr" {
@@ -100,7 +100,7 @@ resource "tfe_sentinel_policy" "gcp-block-allow-all-cidr" {
   description  = "Avoid nasty firewall mistakes (GCP version)"
   organization = "${var.tfe_organization}"
   policy       = "${file("./gcp-block-allow-all-cidr.sentinel")}"
-  enforce_mode = "hard-mandatory"
+  enforce_mode = "soft-mandatory"
 }
 
 # Compute instance policies:
