@@ -32,8 +32,13 @@ resource "tfe_policy_set" "global" {
   organization = "${var.tfe_organization}"
   global       = true
 
+  # !! Bug causes AWS cidr block rule to fail during destroys.  Test once fixed
+  #policy_ids = [
+  #  "${tfe_sentinel_policy.aws-restrict-ingress-sg-rule-cidr-blocks.id}",
+  #  "${tfe_sentinel_policy.azurerm-block-allow-all-cidr.id}",
+  #  "${tfe_sentinel_policy.gcp-block-allow-all-cidr.id}",
+  #]
   policy_ids = [
-    "${tfe_sentinel_policy.aws-restrict-ingress-sg-rule-cidr-blocks.id}",
     "${tfe_sentinel_policy.azurerm-block-allow-all-cidr.id}",
     "${tfe_sentinel_policy.gcp-block-allow-all-cidr.id}",
   ]
