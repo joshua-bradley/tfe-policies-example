@@ -39,6 +39,7 @@ resource "tfe_policy_set" "global" {
   #  "${tfe_sentinel_policy.gcp-block-allow-all-cidr.id}",
   #]
   policy_ids = [
+    "${tfe_sentinel_policy.aws-restrict-ingress-sg-rule-cidr-blocks.id}",
     "${tfe_sentinel_policy.azurerm-block-allow-all-cidr.id}",
     "${tfe_sentinel_policy.gcp-block-allow-all-cidr.id}",
   ]
@@ -88,7 +89,7 @@ resource "tfe_sentinel_policy" "aws-restrict-ingress-sg-rule-cidr-blocks" {
   name         = "Sec-aws-ingress-cidr-0.0.0.0"
   description  = "Avoid nasty firewall mistakes (AWS version)"
   organization = "${var.tfe_organization}"
-  policy       = "${file("./aws-restrict-ingress-sg-rule-cidr-blocks-12.sentinel")}"
+  policy       = "${file("./aws-restrict-ingress-sg-rule-cidr-blocks-2.sentinel")}"
   enforce_mode = "soft-mandatory"
 }
 
