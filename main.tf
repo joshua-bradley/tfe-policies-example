@@ -56,8 +56,8 @@ resource "tfe_policy_set" "development" {
   ]
 
   workspace_external_ids = [
-    "${local.workspaces["myapp_dev"]}",
-    "${local.workspaces["myapp_qa"]}",
+    "${local.workspaces["myapp_master"]}",
+    "${local.workspaces["patspets_master"]}",
     "${local.workspaces["patspets_stage"]}",
   ]
 }
