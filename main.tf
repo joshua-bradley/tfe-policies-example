@@ -113,7 +113,7 @@ resource "tfe_sentinel_policy" "aws-restrict-instance-type-dev" {
   name         = "aws-restrict-instance-type-dev"
   description  = "Limit AWS instances to approved list (for dev infrastructure)"
   organization = "${var.tfe_organization}"
-  policy       = "${file("./restrict-ecs2-instance-type.sentinel")}"
+  policy       = "${file("./restrict-ec2-instance-type.sentinel")}"
   enforce_mode = "soft-mandatory"
 }
 
