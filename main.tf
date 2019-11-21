@@ -170,7 +170,7 @@ resource "tfe_sentinel_policy" "require-modules-from-pmr" {
 }
 
 resource "tfe_sentinel_policy" "limit-cost-by-workspace-type" {
-  name         = "$$$-aws-limit-cost-by-workspace"
+  name         = "/$/$/$-aws-limit-cost-by-workspace"
   description  = "Limit cost by workspace type"
   organization = "${var.tfe_organization}"
   policy       = "${file("./limit-cost-by-workspace-type.sentinel")}"
