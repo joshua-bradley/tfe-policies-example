@@ -41,6 +41,7 @@ resource "tfe_policy_set" "global" {
   policy_ids = [
     "${tfe_sentinel_policy.azurerm-block-allow-all-cidr.id}",
     "${tfe_sentinel_policy.gcp-block-allow-all-cidr.id}",
+    "${tfe_sentinel_policy.aws-restrict-ingress-sg-rule-cidr-blocks.id}",
   ]
 }
 
@@ -88,7 +89,7 @@ resource "tfe_sentinel_policy" "aws-restrict-ingress-sg-rule-cidr-blocks" {
   name         = "Sec-aws-ingress-cidr-0.0.0.0"
   description  = "Avoid nasty firewall mistakes (AWS version)"
   organization = "${var.tfe_organization}"
-  policy       = "${file("./aws-restrict-ingress-sg-rule-cidr-blocks-2.sentinel")}"
+  policy       = "${file("./restrict-ingress-sg-rule-cidr-blocks.sentinel")}"
   enforce_mode = "soft-mandatory"
 }
 
@@ -169,7 +170,7 @@ resource "tfe_sentinel_policy" "require-modules-from-pmr" {
 }
 
 resource "tfe_sentinel_policy" "limit-cost-by-workspace-type" {
-  name         = "Std-aws-limit-cost-by-workspace"
+  name         = "$$$-aws-limit-cost-by-workspace"
   description  = "Limit cost by workspace type"
   organization = "${var.tfe_organization}"
   policy       = "${file("./limit-cost-by-workspace-type.sentinel")}"
