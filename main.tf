@@ -50,7 +50,7 @@ resource "tfe_policy_set" "development" {
   organization = "${var.tfe_organization}"
 
   policy_ids = [
-    "${tfe_sentinel_policy.aws-restrict-instance-type-default.id}",
+    "${tfe_sentinel_policy.aws-restrict-instance-type-dev.id}",
     "${tfe_sentinel_policy.azurerm-restrict-vm-size.id}",
     "${tfe_sentinel_policy.gcp-restrict-machine-type.id}",
   ]
@@ -113,7 +113,7 @@ resource "tfe_sentinel_policy" "aws-restrict-instance-type-dev" {
   name         = "aws-restrict-instance-type-dev"
   description  = "Limit AWS instances to approved list (for dev infrastructure)"
   organization = "${var.tfe_organization}"
-  policy       = "${file("./aws-restrict-instance-type-dev.sentinel")}"
+  policy       = "${file("./restrict-ecs2-instance-type.sentinel")}"
   enforce_mode = "soft-mandatory"
 }
 
