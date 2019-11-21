@@ -53,6 +53,7 @@ resource "tfe_policy_set" "development" {
     "${tfe_sentinel_policy.aws-restrict-instance-type-dev.id}",
     "${tfe_sentinel_policy.azurerm-restrict-vm-size.id}",
     "${tfe_sentinel_policy.gcp-restrict-machine-type.id}",
+    "${tfe_sentinel_policy.limit-cost-by-workspace-type.id}",
   ]
 
   workspace_external_ids = [
@@ -166,3 +167,12 @@ resource "tfe_sentinel_policy" "require-modules-from-pmr" {
   policy       = "${data.template_file.require-modules-from-pmr.rendered}"
   enforce_mode = "hard-mandatory"
 }
+
+resource "tfe_sentinel_policy" "limit-cost-by-workspace-type" {
+  name         = "Std-aws-limit-cost-by-workspace"
+  description  = "Limit cost by workspace type"
+  organization = "${var.tfe_organization}"
+  policy       = "${file("./limit-cost-by-workspace-type.sentinel")}"
+  enforce_mode = "soft-mandatory"
+}
+
