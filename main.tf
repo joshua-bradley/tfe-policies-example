@@ -112,7 +112,7 @@ resource "tfe_sentinel_policy" "gcp-block-allow-all-cidr" {
 # Compute instance policies:
 
 resource "tfe_sentinel_policy" "aws-restrict-instance-type-dev" {
-  name         = "aws-restrict-instance-type-dev"
+  name         = "Std-aws-restrict-instance-type"
   description  = "Limit AWS instances to approved list (for dev infrastructure)"
   organization = "${var.tfe_organization}"
   policy       = "${file("./restrict-ec2-instance-type.sentinel")}"
