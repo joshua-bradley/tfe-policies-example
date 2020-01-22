@@ -2,7 +2,7 @@ resource "tfe_policy_set" "platform" {
   name                   = "platform-best-practices"
   description            = "Platform Policies"
   organization           = "${var.tfe_organization}"
-  policies_path          = "policies/platform-best-practices"
+  policies_path          = "policies/platform-best-practices/aws"
   workspace_external_ids = [
     "${local.workspaces["patspets_dev"]}",
     "${local.workspaces["patspets_stage"]}",
