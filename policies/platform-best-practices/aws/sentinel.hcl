@@ -11,5 +11,5 @@ policy "enforce-mandatory-tags" {
 }
 
 policy "blacklist-network-resources" {
-    enforcement_level = "hard-mandatory"
+    enforcement_level = "soft-mandatory"
 }
