@@ -25,14 +25,14 @@ param address default "app.terraform.io"
 # The name of the Terraform Cloud or Terraform Enterprise organization
 param organization
 
-# A valid Terraform Cloud or Terraform Enterprise API token
-param token
+# A valid Terraform Cloud or Terraform Enterprise API tfe_token
+param tfe_token
 
 
 ##### Functions #####
 
 # Retrieve modules from a module registry and give their paths and versions
-retrieve_latest_module_versions = func(public_registry, address, organization, token) {
+retrieve_latest_module_versions = func(public_registry, address, organization, tfe_token) {
 
   # Call the TFC Modules API and extract the response
   if public_registry {
@@ -43,7 +43,7 @@ retrieve_latest_module_versions = func(public_registry, address, organization, t
   } else {
     req = http.request("https://" + address + "/api/registry/v1/modules/"  +
                        organization)
-    req = req.with_header("Authorization", "Bearer " + token)
+    req = req.with_header("Authorization", "Bearer " + tfe_token)
   }
   res = json.unmarshal(http.get(req).body)
 
@@ -60,13 +60,13 @@ retrieve_latest_module_versions = func(public_registry, address, organization, t
 }
 
 # Validate sources of modules in the registry
-validate_modules = func(public_registry, address, organization, token) {
+validate_modules = func(public_registry, address, organization, tfe_token) {
 
   validated = true
 
   # Get latest module versions from registry
   discovered_modules = retrieve_latest_module_versions(public_registry, address,
-                       organization, token)
+                       organization, tfe_token)
 
   # Iterate over all modules in the tfconfig import
   for tfconfig.module_paths as path {
@@ -125,7 +125,7 @@ validate_modules = func(public_registry, address, organization, token) {
 ##### Rules #####
 
 # Call the validation function
-modules_validated = validate_modules(public_registry, address, organization, token)
+modules_validated = validate_modules(public_registry, address, organization, tfe_token)
 
 # Main rule
 main = rule {
