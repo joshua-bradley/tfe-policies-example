@@ -1,4 +1,4 @@
-resource "tfe_policy_set" "platform" {
+resource "tfe_policy_set" "global" {
   name                   = "global_policies"
   description            = "Global Policies"
   organization           = "${var.tfe_organization}"
