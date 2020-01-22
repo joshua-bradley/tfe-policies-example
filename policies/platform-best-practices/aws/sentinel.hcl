@@ -9,3 +9,7 @@ policy "require-all-resources-from-pmr" {
 policy "enforce-mandatory-tags" {
     enforcement_level = "hard-mandatory"
 }
+
+policy "blacklist-network-resources" {
+    enforcement_level = "hard-mandatory"
+}
