@@ -3,7 +3,7 @@ policy "use-latest-module-version" {
 }
 
 policy "require-all-resources-from-pmr" {
-    enforcement_level = "hard-mandatory"
+    enforcement_level = "soft-mandatory"
 }
 
 policy "enforce-mandatory-tags" {
