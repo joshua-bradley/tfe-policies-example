@@ -17,3 +17,8 @@ variable "prod_workspaces" {
     "my_workspace_prod1=_1",
   ]
 }
+
+variable "repo_org" {}
+
+variable "oauth_token_id" {}
+
