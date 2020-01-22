@@ -10,6 +10,6 @@ policy "enforce-mandatory-tags" {
     enforcement_level = "hard-mandatory"
 }
 
-policy "blacklist-network-resources" {
-    enforcement_level = "soft-mandatory"
-}
+//policy "blacklist-network-resources" {
+//    enforcement_level = "soft-mandatory"
+//}
