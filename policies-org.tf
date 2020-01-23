@@ -19,6 +19,10 @@ resource "tfe_policy_set" "org" {
 
 resource "null_resource" "sentinal_var" {
 
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+  
   provisioner "local-exec" {
       command = "${path.module}/scripts/create_policyset_vars.sh"
       interpreter = ["bash"]
