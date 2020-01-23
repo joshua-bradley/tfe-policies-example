@@ -1,0 +1,11 @@
+{
+  "data": {
+    "type":"vars",
+    "attributes": {
+      "key":"KEY_NAME",
+      "value":"KEY_VALUE",
+      "category":"policy-set",
+      "sensitive":SENSITIVE
+    }
+  }
+}

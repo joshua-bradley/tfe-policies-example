@@ -15,3 +15,20 @@ resource "tfe_policy_set" "org" {
     oauth_token_id     = "${var.oauth_token_id}"
   }
 }
+
+resource "null_resource" "sentinal_vars" {
+
+  triggers = {
+    shell_hash = "${sha256(file("${path.module}/appsettings.sh"))}"
+  }
+  provisioner "local-exec" {
+      command = "${path.module}/scripts/create_policyset_vars.sh"
+      interpreter = ["sh"]
+      working_dir = "${path.module}"
+      environment = {
+        ATLAS_TOKEN = "${var.tfe_token}"
+      }
+  }
+
+  depends_on = ["tfe_policy_set.org"]
+}
