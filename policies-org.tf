@@ -16,6 +16,7 @@ resource "tfe_policy_set" "org" {
   }
 }
 
+
 resource "null_resource" "sentinal_vars" {
 
   provisioner "local-exec" {
