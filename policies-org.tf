@@ -20,7 +20,7 @@ resource "null_resource" "sentinal_vars" {
 
   provisioner "local-exec" {
       command = "${path.module}/scripts/create_policyset_vars.sh"
-      interpreter = ["sh"]
+      interpreter = ["bash"]
       working_dir = "${path.module}/scripts"
       environment = {
         ATLAS_TOKEN = "${var.tfe_token}"
