@@ -3,5 +3,5 @@ policy "blacklist-network-resources" {
 }
 
 policy "require-all-resources-from-pmr" {
-    enforcement_level = "advisory"
+    enforcement_level = "soft-mandatory"
 }
