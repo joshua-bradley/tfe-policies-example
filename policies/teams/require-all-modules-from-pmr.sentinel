@@ -1,0 +1,43 @@
+# This policy validates that all modules loaded directly by the
+# root module are in the Private Module Registry (PMR) of a TFC
+# server and that no resources are created in the root module
+
+#####Imports#####
+import "tfconfig"
+import "strings"
+
+#####Functions#####
+
+# Require all modules directly under root module to come from PMR
+require_modules_from_pmr = func(address, organization) {
+
+  validated = true
+
+  for tfconfig.modules as name, m {
+    if not strings.has_prefix(m.source, address + "/" + organization) {
+      print("All non-root modules must come from the private module registry",
+      address + "/" + organization)
+      print("You included module,", name, ", with source,", m.source)
+      validated = false
+    }
+  }
+
+  return validated
+}
+
+##### Global Variables #####
+# Define the address of the TFE server
+address = "app.terraform.io"
+
+# Define organization variable
+organization = "Patrick"
+
+##### Rules #####
+
+# Call the validation functions
+all_non_root_modules_from_pmr = require_modules_from_pmr(address, organization)
+
+# Main rule
+main = rule {
+  all_non_root_modules_from_pmr
+}
