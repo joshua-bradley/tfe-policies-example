@@ -3,6 +3,7 @@
 address="app.terraform.io"
 organization="Patrick"
 
+#TFC environment doesn't have jq.  using snap to install it for this script.
 sudo snap install jq
 export PATH=$PATH:/snap:/snap/bin
 
@@ -76,7 +77,7 @@ else
   updateParam ${org_policies_id} "organization" "Patrick" "false"
 fi
 
-# Add variable : tfe_token
+# Add variable : tfe_token & enable encryption
 org_policies_id="$(getid 'org-policies')"
 check_tfe_token=$(checkparam ${org_policies_id} "tfe_token")
 if [[ ${check_tfe_token} != "" ]]; then
