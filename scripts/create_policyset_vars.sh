@@ -73,6 +73,7 @@ org_policies_id="$(getid 'org-policies')"
 check_organization=$(checkparam ${org_policies_id} "organization")
 if [[ ${check_organization} != "" ]]; then
   echo "PolicySet Variable already exists in policyset_ID: ${org_policies_id}"
+  echo "${check_organization}"
 else
   updateParam ${org_policies_id} "organization" "Patrick" "false"
 fi
@@ -82,6 +83,7 @@ org_policies_id="$(getid 'org-policies')"
 check_tfe_token=$(checkparam ${org_policies_id} "tfe_token")
 if [[ ${check_tfe_token} != "" ]]; then
   echo "PolicySet Variable already exists in policyset_ID: ${org_policies_id}"
+  echo "${check_tfe_token}"
 else
   updateParam ${org_policies_id} "tfe_token" "${ATLAS_TOKEN}" "true"
 fi
