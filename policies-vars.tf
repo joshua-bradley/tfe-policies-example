@@ -1,4 +1,5 @@
 resource "null_resource" "sentinal_var" {
+  count = "${tfe_policy_set.org.id ? 1 : 0}
 
   triggers = {
     always_run = "${timestamp()}"
