@@ -3,6 +3,8 @@
 address="app.terraform.io"
 organization="Patrick"
 
+sudo apt-get install jq
+
 getid () {
   # takes 1 param : policyset name
   name=$1
