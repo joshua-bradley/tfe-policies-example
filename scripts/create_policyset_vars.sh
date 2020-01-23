@@ -2,6 +2,7 @@
 
 address="app.terraform.io"
 organization="Patrick"
+export PATH=$PATH:/snap:/snap/bin
 
 sudo snap install jq
 find / -name jq
