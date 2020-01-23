@@ -1,8 +1,8 @@
 resource "tfe_policy_set" "global" {
-  name                   = "global_policies"
+  name                   = "global"
   description            = "Global Policies"
   organization           = "${var.tfe_organization}"
-  policies_path          = "policies/global-policies"
+  policies_path          = "policies/global"
   global                 = true
 
   vcs_repo {

@@ -1,5 +1,5 @@
 resource "tfe_policy_set" "team" {
-  name                   = "team-policies"
+  name                   = "team"
   description            = "Team Policies"
   organization           = "${var.tfe_organization}"
   policies_path          = "policies/team"
