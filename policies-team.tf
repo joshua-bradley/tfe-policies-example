@@ -1,4 +1,5 @@
 resource "tfe_policy_set" "team" {
+  count                  = "${var.team ? 1 : 0}"
   name                   = "team"
   description            = "Team Policies"
   organization           = "${var.tfe_organization}"

@@ -22,3 +22,19 @@ variable "repo_org" {}
 
 variable "oauth_token_id" {}
 
+variable "global" {
+  description = "Enable/Disable Global Policies"
+  default     = true
+}
+variable "team" {
+  description = "Enable/Disable Team Policies"
+  default     = true
+}
+variable "teams" {
+  description = "Enable/Disable Teams Policies"
+  default     = false
+}
+variable "org" {
+  description = "Enable/Disable Org Policies"
+  default     = false
+}
