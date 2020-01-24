@@ -4,14 +4,17 @@ address="app.terraform.io"
 organization="Patrick"
 
 #TFC environment doesn't have jq.  using snap to install it for this script.
-sudo snap install jq
-export PATH=$PATH:/snap:/snap/bin
+if [[ `hostname` =~ 'Patrick' ]]; then
+  echo "Running Locally: skipping snap install jq"
+else
+  sudo snap install jq
+  export PATH=$PATH:/snap:/snap/bin
+fi
 
 getid () {
   # takes 1 param : policyset name
   name=$1
   policy_id=$(curl -s --header "Authorization: Bearer $ATLAS_TOKEN" --header "Content-Type: application/vnd.api+json" --request GET "https://${address}/api/v2/organizations/${organization}/policy-sets" | jq -r ".data[] | select(.attributes.name | contains (\"${name}\")) | .id")
-  #echo "curl -s --header \"Authorization: Bearer $ATLAS_TOKEN\" --header \"Content-Type: application/vnd.api+json\" --request GET \"https://${address}/api/v2/organizations/${organization}/policy-sets\" | jq -r '.data[] | select(.attributes.name | contains (\"${name}\")) | .id'"
   echo "${policy_id}"
 }
 
@@ -56,7 +59,8 @@ updateParam () {
 # API Calls - Troubleshooting
 
 # get policy id (org-policies)
-#echo "curl -s --header \"Authorization: Bearer $ATLAS_TOKEN\" --header \"Content-Type: application/vnd.api+json\" --request GET \"https://${address}/api/v2/organizations/${organization}/policy-sets\" | jq -r '.data[] | select(.attributes.name | contains (\"org-policies\")) | .id'"
+ 
+echo "curl -s --header \"Authorization: Bearer $ATLAS_TOKEN\" --header \"Content-Type: application/vnd.api+json\" --request GET \"https://${address}/api/v2/organizations/${organization}/policy-sets\" | jq -r '.data[] | select(.attributes.name | contains (\"org-policies\")) | .id'"
 #org_policies_id=$(curl -s --header "Authorization: Bearer $ATLAS_TOKEN" --header "Content-Type: application/vnd.api+json" --request GET "https://${address}/api/v2/organizations/${organization}/policy-sets" | jq -r '.data[] | select(.attributes.name | contains ("org-policies")) | .id')
 #echo ${org_policies_id}
 
@@ -69,7 +73,7 @@ updateParam () {
 #"https://${address}/api/v2/policy-sets/${org_policies_id}/parameters" | jq -r '.data[] | select(.attributes.key | contains ("organization")) | .id')
 
 # Add variable : organization
-org_policies_id="$(getid 'org-policies')"
+org_policies_id="$(getid 'org')"
 check_organization=$(checkparam ${org_policies_id} "organization")
 if [[ ${check_organization} != "" ]]; then
   echo "PolicySet Variable already exists in policyset_ID: ${org_policies_id}"
@@ -79,11 +83,11 @@ else
 fi
 
 # Add variable : tfe_token & enable encryption
-org_policies_id="$(getid 'org-policies')"
+org_policies_id="$(getid 'org')"
 check_tfe_token=$(checkparam ${org_policies_id} "tfe_token")
 if [[ ${check_tfe_token} != "" ]]; then
   echo "PolicySet Variable already exists in policyset_ID: ${org_policies_id}"
   echo "${check_tfe_token}"
 else
   updateParam ${org_policies_id} "tfe_token" "${ATLAS_TOKEN}" "true"
-fi
+fi 
