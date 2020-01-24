@@ -1,5 +1,5 @@
 resource "tfe_policy_set" "org" {
-  count                  = "${var.org ? 1 : 0}"
+  count                  = "${var.policies_org ? 1 : 0}"
   name                   = "org"
   description            = "Organization Policies"
   organization           = "${var.tfe_organization}"
@@ -18,7 +18,7 @@ resource "tfe_policy_set" "org" {
 }
 
 resource "null_resource" "sentinal_var" {
-  count                  = "${var.org ? 1 : 0}"
+  count                  = "${var.policies_org ? 1 : 0}"
 
   triggers = {
     always_run = "${timestamp()}"

@@ -1,5 +1,5 @@
 resource "tfe_policy_set" "global" {
-  count                  = "${var.global ? 1 : 0}"
+  count                  = "${var.policies_global ? 1 : 0}"
   name                   = "global"
   description            = "Global Policies"
   organization           = "${var.tfe_organization}"
