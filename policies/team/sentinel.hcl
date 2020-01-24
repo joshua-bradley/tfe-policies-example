@@ -1,5 +1,5 @@
 policy "enforce-mandatory-tags-aws" {
-    enforcement_level = "hard-mandatory"
+    enforcement_level = "soft-mandatory"
 }
 
 policy "limit-cost-by-workspace-type" {
