@@ -60,7 +60,7 @@ updateParam () {
 
 # get policy id (org-policies)
  
-echo "curl -s --header \"Authorization: Bearer $ATLAS_TOKEN\" --header \"Content-Type: application/vnd.api+json\" --request GET \"https://${address}/api/v2/organizations/${organization}/policy-sets\" | jq -r '.data[] | select(.attributes.name | contains (\"org-policies\")) | .id'"
+#echo "curl -s --header \"Authorization: Bearer $ATLAS_TOKEN\" --header \"Content-Type: application/vnd.api+json\" --request GET \"https://${address}/api/v2/organizations/${organization}/policy-sets\" | jq -r '.data[] | select(.attributes.name | contains (\"org-policies\")) | .id'"
 #org_policies_id=$(curl -s --header "Authorization: Bearer $ATLAS_TOKEN" --header "Content-Type: application/vnd.api+json" --request GET "https://${address}/api/v2/organizations/${organization}/policy-sets" | jq -r '.data[] | select(.attributes.name | contains ("org-policies")) | .id')
 #echo ${org_policies_id}
 
