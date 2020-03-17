@@ -1,5 +1,5 @@
 policy "aws-restrict-ingress-cidr" {
-    enforcement_level = "hard-mandatory"
+    enforcement_level = "soft-mandatory"
 }
 
 policy "azure-restrict-ingress-cidr" {
