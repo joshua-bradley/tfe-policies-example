@@ -25,7 +25,7 @@ resource "null_resource" "sentinal_var" {
   }
   
   provisioner "local-exec" {
-      command = "${path.module}/scripts/create_policyset_vars.sh"
+      command = "${path.module}/scripts/create_policyset_vars.sh ${var.tfe_organization}"
       interpreter = ["bash"]
       working_dir = "${path.module}/scripts"
       environment = {
