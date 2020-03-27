@@ -10,13 +10,13 @@ variable "tfe_organization" {
   default     = "Patrick"
 }
 
-variable "prod_workspaces" {
-  type = "list"
-
-  default = [
-    "my_workspace_prod1=_1",
-  ]
-}
+#variable "prod_workspaces" {
+#  type = "list"#
+#
+#  default = [
+#    "my_workspace_prod1=_1",
+#  ]
+#}
 
 variable "repo_org" {}
 
