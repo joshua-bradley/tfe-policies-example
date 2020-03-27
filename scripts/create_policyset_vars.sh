@@ -1,7 +1,7 @@
 #!/bin/bash
 
-address="app.terraform.io"
-organization="$1"
+address="${HOST}"
+organization="${ORGANIZATION}"
 
 #TFC environment doesn't have jq.  using snap to install it for this script.
 if [[ `hostname` =~ 'Patrick' ]]; then
