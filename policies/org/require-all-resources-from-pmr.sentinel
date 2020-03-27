@@ -40,11 +40,11 @@ require_modules_from_pmr = func(address, organization) {
 }
 
 ##### Global Variables #####
-# Define the address of the TFE server
-address = "app.terraform.io"
+# The address of the Terraform Cloud or Terraform Enterprise server
+param address default "app.terraform.io"
 
-# Define organization variable
-organization = "Patrick"
+# The name of the Terraform Cloud or Terraform Enterprise organization
+param organization
 
 ##### Rules #####
 

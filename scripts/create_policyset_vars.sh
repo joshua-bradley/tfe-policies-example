@@ -8,9 +8,6 @@ if [[ `hostname` =~ 'Patrick' ]]; then
   echo "Running Locally: skipping snap install jq"
 else
   sudo snap install jq
-  snap install jq
-  env
-  which snap
   export PATH=$PATH:/snap:/snap/bin
 fi
 
