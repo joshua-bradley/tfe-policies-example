@@ -6,6 +6,14 @@
 import "tfconfig"
 import "strings"
 
+
+##### Global Variables #####
+# The address of the Terraform Cloud or Terraform Enterprise server
+param address default "app.terraform.io"
+
+# The name of the Terraform Cloud or Terraform Enterprise organization
+param organization default "presto-projects"
+
 #####Functions#####
 
 # Require all modules directly under root module to come from PMR
@@ -24,13 +32,6 @@ require_modules_from_pmr = func(address, organization) {
 
   return validated
 }
-
-##### Global Variables #####
-# Define the address of the TFE server
-address = "app.terraform.io"
-
-# Define organization variable
-organization = "Patrick"
 
 ##### Rules #####
 
