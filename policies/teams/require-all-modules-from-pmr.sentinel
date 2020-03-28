@@ -5,7 +5,8 @@
 #####Imports#####
 import "tfconfig"
 import "strings"
-
+import "json"
+import "types"
 
 ##### Global Variables #####
 # The address of the Terraform Cloud or Terraform Enterprise server
