@@ -13,7 +13,7 @@ import "types"
 param address default "app.terraform.io"
 
 # The name of the Terraform Cloud or Terraform Enterprise organization
-param organization default "presto-projects"
+param organization
 
 #####Functions#####
 
