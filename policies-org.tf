@@ -17,7 +17,7 @@ resource "tfe_policy_set" "org" {
   }
 }
 
-resource "null_resource" "sentinal_var" {
+resource "null_resource" "sentinal_var_org" {
   count                  = "${var.policies_org ? 1 : 0}"
 
   triggers = {
@@ -35,5 +35,5 @@ resource "null_resource" "sentinal_var" {
       }
   }
 
-  depends_on = ["tfe_policy_set.teams"]
+  depends_on = ["null_resource.sentinal_var_teams"]
 }
