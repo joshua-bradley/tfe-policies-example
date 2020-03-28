@@ -1,7 +1,7 @@
 #!/bin/bash
 
 address="${HOST}"
-organization="${ORGANIZATION}"
+#organization="${ORGANIZATION}"
 
 #TFC environment doesn't have jq.  using snap to install it for this script.
 if [[ `hostname` =~ 'Patrick' ]]; then
@@ -15,7 +15,7 @@ fi
 getid () {
   # takes 1 param : policyset name
   name=$1
-  policy_id=$(curl -s --header "Authorization: Bearer $ATLAS_TOKEN" --header "Content-Type: application/vnd.api+json" --request GET "https://${address}/api/v2/organizations/${organization}/policy-sets" | jq -r ".data[] | select(.attributes.name | contains (\"${name}\")) | .id")
+  policy_id=$(curl -s --header "Authorization: Bearer $ATLAS_TOKEN" --header "Content-Type: application/vnd.api+json" --request GET "https://${address}/api/v2/organizations/${tfe_organization}/policy-sets" | jq -r ".data[] | select(.attributes.name | contains (\"${name}\")) | .id")
   echo "${policy_id}"
 }
 
