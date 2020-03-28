@@ -7,7 +7,6 @@ variable "tfe_hostname" {
 
 variable "tfe_organization" {
   description = "The TFE organization to apply your changes to."
-  default     = "Patrick"
 }
 
 #variable "prod_workspaces" {

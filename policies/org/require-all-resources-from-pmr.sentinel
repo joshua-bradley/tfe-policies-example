@@ -6,14 +6,12 @@
 import "tfconfig"
 import "strings"
 
-
-
 ##### Global Variables #####
 # The address of the Terraform Cloud or Terraform Enterprise server
 param address default "app.terraform.io"
 
 # The name of the Terraform Cloud or Terraform Enterprise organization
-param organization default "presto-projects"
+param organization
 
 #####Functions#####
 

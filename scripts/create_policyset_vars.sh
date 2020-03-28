@@ -9,6 +9,7 @@ if [[ `hostname` =~ 'Patrick' ]]; then
 else
   sudo snap install jq
   export PATH=$PATH:/snap:/snap/bin
+  env
 fi
 
 getid () {
