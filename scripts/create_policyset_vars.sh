@@ -1,7 +1,7 @@
 #!/bin/bash
 
 address="${HOST}"
-#organization="${ORGANIZATION}"
+organization="${ORGANIZATION}"
 
 #TFC environment doesn't have jq.  using snap to install it for this script.
 if [[ `hostname` =~ 'Patrick' ]]; then
@@ -80,7 +80,7 @@ if [[ ${check_organization} != "" ]]; then
   echo "PolicySet Variable already exists in policyset_ID: ${org_policies_id}"
   echo "${check_organization}"
 else
-  updateParam ${org_policies_id} "organization" "$1" "false"
+  updateParam ${org_policies_id} "organization" "${organization}" "false"
 fi
 
 # Add variable : tfe_token & enable encryption
