@@ -2,7 +2,7 @@
 
 address="${HOST}"
 organization="${ORGANIZATION}"
-
+policy_name="${POLICY_NAME}"
 #TFC environment doesn't have jq.  using snap to install it for this script.
 if [[ `hostname` =~ 'Patrick' ]]; then
   echo "Running Locally: skipping snap install jq"
@@ -78,7 +78,7 @@ updateParam () {
 #"https://${address}/api/v2/policy-sets/${org_policies_id}/parameters" | jq -r '.data[] | select(.attributes.key | contains ("organization")) | .id')
 
 # Add variable : organization
-org_policies_id="$(getid 'org')"
+org_policies_id="$(getid ${policy_name})"
 check_organization=$(checkparam ${org_policies_id} "organization")
 if [[ ${check_organization} != "" ]]; then
   echo "PolicySet Variable already exists in policyset_ID: ${org_policies_id}"
@@ -88,7 +88,7 @@ else
 fi
 
 # Add variable : tfe_token & enable encryption
-org_policies_id="$(getid 'org')"
+org_policies_id="$(getid ${policy_name})"
 check_tfe_token=$(checkparam ${org_policies_id} "tfe_token")
 if [[ ${check_tfe_token} != "" ]]; then
   echo "PolicySet Variable already exists in policyset_ID: ${org_policies_id}"

@@ -32,6 +32,7 @@ resource "null_resource" "sentinal_var_org" {
         ATLAS_TOKEN = "${var.tfe_token}"
         HOST = "${var.tfe_hostname}"
         ORGANIZATION = "${var.tfe_organization}"
+        POLICY_NAME = "org"
       }
   }
 
