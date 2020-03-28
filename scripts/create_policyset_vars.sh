@@ -7,8 +7,12 @@ organization="${ORGANIZATION}"
 if [[ `hostname` =~ 'Patrick' ]]; then
   echo "Running Locally: skipping snap install jq"
 else
+  if [[ ! $(which jq) ]]; then
   sudo snap install jq
   export PATH=$PATH:/snap:/snap/bin
+  else
+    echo "jq already installed"
+  fi
   env
 fi
 
