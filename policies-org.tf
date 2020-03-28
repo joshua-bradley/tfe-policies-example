@@ -35,5 +35,5 @@ resource "null_resource" "sentinal_var" {
       }
   }
 
-  depends_on = ["tfe_policy_set.org"]
+  depends_on = ["tfe_policy_set.teams"]
 }
